@@ -161,7 +161,6 @@
 .content-area {
   flex: 1;
   padding: 0 20px 20px 20px;
-  overflow-y: auto;
   background-color: #1e1e1e;
 }
 
@@ -258,6 +257,8 @@
 .game-news-section {
   flex: 1;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-news-section h2 {
@@ -268,15 +269,56 @@
 
 .game-news-list {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-flow: row;
+  overflow-y: hidden;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px 0;
+  flex: 1;
+  min-height: 0;
+  scrollbar-width: thin;
+}
+
+/* Custom scrollbar styles for webkit browsers */
+.game-news-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.game-news-list::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.game-news-list::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.game-news-list::-webkit-scrollbar-thumb:hover {
+  background: #666;
 }
 
 .game-news-item {
   background-color: #252525;
   border-radius: 8px;
   padding: 15px;
-  border-left: 4px solid #0078d7;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.game-news-item .news-image {
+  height: 300px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  align-self: center;
+}
+
+.game-news-item .news-text {
+  flex-shrink: 0;
+  max-width: 440px;
 }
 
 .news-date {
@@ -606,7 +648,8 @@
   font-family: monospace;
 }
 
-.change-path-button, .fix-game-button {
+.change-path-button,
+.fix-game-button {
   background-color: #3498db;
   color: white;
   border: none;
@@ -616,7 +659,8 @@
   transition: background-color 0.2s;
 }
 
-.change-path-button:hover, .fix-game-button:hover {
+.change-path-button:hover,
+.fix-game-button:hover {
   background-color: #2980b9;
 }
 
@@ -631,4 +675,4 @@
 
 .fix-game-button:hover {
   background-color: #c0392b;
-} 
+}

@@ -304,6 +304,14 @@ function GameContent({ game, launchGame, installPaths, onGameInstalled }) {
     return `${installPath}/${game.exePath}`;
   };
   
+  // Handle horizontal scrolling with the mouse wheel
+  const handleNewsListScroll = (e) => {
+    if (e.deltaY !== 0) {
+      e.preventDefault();
+      e.currentTarget.scrollLeft += e.deltaY;
+    }
+  };
+  
   // Render the settings modal
   const renderSettingsModal = () => {
     if (!showSettings) return null;
@@ -374,12 +382,15 @@ function GameContent({ game, launchGame, installPaths, onGameInstalled }) {
         ) : gameNews.length === 0 ? (
           <div className="no-news-message">No news available for this game.</div>
         ) : (
-          <div className="game-news-list">
+          <div className="game-news-list" onWheel={handleNewsListScroll}>
             {gameNews.map(item => (
               <div className="game-news-item" key={item.id}>
-                <div className="news-date">{item.date}</div>
-                <h3>{item.title}</h3>
-                <p>{item.content}</p>
+                {item.image && <img className="news-image" src={item.image} alt={item.title} />}
+                <div className="news-text">
+                  <div className="news-date">{item.date}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.content}</p>
+                </div>
               </div>
             ))}
           </div>

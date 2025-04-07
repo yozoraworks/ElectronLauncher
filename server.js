@@ -19,13 +19,22 @@ const gameNews = {
       id: 1,
       date: '2023-04-01',
       title: 'New Minecraft Update 1.19',
-      content: 'Explore the new Wild Update featuring new biomes and mobs like the Warden and the Allay.'
+      content: 'Explore the new Wild Update featuring new biomes and mobs like the Warden and the Allay.',
+      image: '/assets/news/minecraft-update.jpg'
     },
     {
       id: 2,
       date: '2023-03-15',
       title: 'Minecraft Community Event',
-      content: 'Join the community building event this weekend to help create a massive collaborative world.'
+      content: 'Join the community building event this weekend to help create a massive collaborative world.',
+      image: '/assets/news/minecraft-event.jpg'
+    },
+    {
+      id: 3,
+      date: '2023-02-28',
+      title: 'Minecraft Marketplace Updates',
+      content: 'Check out the latest additions to the Minecraft marketplace with new skins and texture packs.',
+      image: '/assets/news/minecraft-marketplace.jpg'
     }
   ],
   2: [ // Fortnite news
@@ -33,13 +42,22 @@ const gameNews = {
       id: 1,
       date: '2023-04-05',
       title: 'Chapter 4 Season 2 Now Live',
-      content: 'Drop into the new season with new locations, weapons, and the ability to use vehicles in creative mode.'
+      content: 'Drop into the new season with new locations, weapons, and the ability to use vehicles in creative mode.',
+      image: '/assets/news/fortnite-season.jpg'
     },
     {
       id: 2,
       date: '2023-03-20',
       title: 'Fortnite Competitive Update',
-      content: 'Changes to competitive play and tournament structure have been announced for the upcoming FNCS.'
+      content: 'Changes to competitive play and tournament structure have been announced for the upcoming FNCS.',
+      image: '/assets/news/fortnite-competitive.jpg'
+    },
+    {
+      id: 3,
+      date: '2023-03-10',
+      title: 'New Collaboration Skins',
+      content: 'Famous movie characters join the Fortnite universe with exclusive skins and emotes.',
+      image: '/assets/news/fortnite-skins.jpg'
     }
   ],
   3: [ // Valorant news
@@ -47,13 +65,22 @@ const gameNews = {
       id: 1,
       date: '2023-04-02',
       title: 'New Agent Revealed',
-      content: 'Meet the newest agent joining the Valorant roster, with unique abilities that will change the meta.'
+      content: 'Meet the newest agent joining the Valorant roster, with unique abilities that will change the meta.',
+      image: '/assets/news/valorant-agent.jpg'
     },
     {
       id: 2,
       date: '2023-03-25',
       title: 'Map Updates and Balance Changes',
-      content: 'Several maps have received updates to address balance issues and improve gameplay flow.'
+      content: 'Several maps have received updates to address balance issues and improve gameplay flow.',
+      image: '/assets/news/valorant-maps.jpg'
+    },
+    {
+      id: 3,
+      date: '2023-03-15',
+      title: 'Valorant Championship Series',
+      content: 'The biggest Valorant tournament of the year is coming soon with teams from around the world.',
+      image: '/assets/news/valorant-tournament.jpg'
     }
   ]
 };
