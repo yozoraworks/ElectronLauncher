@@ -307,8 +307,22 @@ function GameContent({ game, launchGame, installPaths, onGameInstalled }) {
   // Handle horizontal scrolling with the mouse wheel
   const handleNewsListScroll = (e) => {
     if (e.deltaY !== 0) {
-      e.preventDefault();
       e.currentTarget.scrollLeft += e.deltaY;
+    }
+  };
+  
+  // Open URL in external browser
+  const openNewsUrl = (e, url) => {
+    if (!url) return;
+    
+    e.stopPropagation(); // Prevent event bubbling
+    
+    // Use electron shell to open URL in default browser
+    if (window.electron && window.electron.openExternal) {
+      window.electron.openExternal(url);
+    } else {
+      // Fallback to window.open for non-electron environments
+      window.open(url, '_blank');
     }
   };
   
@@ -384,7 +398,12 @@ function GameContent({ game, launchGame, installPaths, onGameInstalled }) {
         ) : (
           <div className="game-news-list" onWheel={handleNewsListScroll}>
             {gameNews.map(item => (
-              <div className="game-news-item" key={item.id}>
+              <div 
+                className="game-news-item" 
+                key={item.id}
+                onClick={(e) => openNewsUrl(e, item.url)}
+                style={{ cursor: item.url ? 'pointer' : 'default' }}
+              >
                 {item.image && <img className="news-image" src={item.image} alt={item.title} />}
                 <div className="news-text">
                   <div className="news-date">{item.date}</div>
