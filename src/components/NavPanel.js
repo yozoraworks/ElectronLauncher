@@ -1,4 +1,5 @@
 import React from 'react';
+import UserButton from './UserButton';
 
 function NavPanel({ games, selectedItem, setSelectedItem }) {
   return (
@@ -28,6 +29,11 @@ function NavPanel({ games, selectedItem, setSelectedItem }) {
             <div className="nav-text">{game.name}</div>
           </div>
         ))}
+      </div>
+
+      {/* User button at the bottom */}
+      <div className="nav-footer">
+        <UserButton />
       </div>
     </div>
   );

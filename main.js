@@ -16,6 +16,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    backgroundColor: '#121212',
     frame: false, // For custom title bar
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

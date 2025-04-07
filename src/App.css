@@ -96,9 +96,7 @@
   padding: 15px 0;
   display: flex;
   flex-direction: column;
-  height: 100%;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
 }
 
 .nav-item {
@@ -152,9 +150,9 @@
 }
 
 .nav-games {
-  display: flex;
-  flex-direction: column;
   flex: 1;
+  overflow-y: auto;
+  min-height: 0;
 }
 
 /* Right Content Area */
@@ -675,4 +673,276 @@
 
 .fix-game-button:hover {
   background-color: #c0392b;
+}
+
+/* User Button & Panel Styles */
+.nav-footer {
+  margin-top: auto;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.user-button-container {
+  position: relative;
+  width: 100%;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background-color 0.2s;
+}
+
+.user-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.user-text {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-panel-popup {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 10px 10px 10px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 420px;
+  max-width: 90%;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Login Panel Styles */
+.login-panel {
+  padding: 20px;
+}
+
+.login-panel h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.error-message {
+  padding: 8px 12px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 3px solid #ff4d4d;
+  color: #ff4d4d;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #cccccc;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  background-color: #333333;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #7289da;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #7289da;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #5c73c9;
+}
+
+.login-button:disabled {
+  background-color: #505a7a;
+  cursor: not-allowed;
+}
+
+.login-help {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #888888;
+  text-align: center;
+}
+
+/* User Panel Styles */
+.user-panel {
+  padding: 20px;
+}
+
+.user-panel h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  margin-right: 15px;
+}
+
+.avatar-placeholder {
+  width: 50px;
+  height: 50px;
+  background-color: #7289da;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.user-actions {
+  margin-top: 10px;
+}
+
+.logout-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #f04747;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: #d84040;
+}
+
+.logout-confirmation {
+  background-color: #333333;
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.logout-confirmation p {
+  margin: 0 0 12px 0;
+  text-align: center;
+  color: #eeeeee;
+  font-size: 14px;
+}
+
+.confirmation-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cancel-button, .confirm-button {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-button {
+  background-color: #555555;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #666666;
+}
+
+.confirm-button {
+  background-color: #f04747;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #d84040;
 }
