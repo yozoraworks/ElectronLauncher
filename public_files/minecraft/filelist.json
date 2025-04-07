@@ -1,0 +1,30 @@
+[
+    {
+        "hash":  "5ec07b24a1d37f376235074f32d4dfc8",
+        "file":  "a.txt"
+    },
+    {
+        "hash":  "8292fa42ed8fe41cece0c0ea2ed18d1e",
+        "file":  "b.txt"
+    },
+    {
+        "hash":  "84a853dccd6f504bed45d35119070f8e",
+        "file":  "c.txt"
+    },
+    {
+        "hash":  "97ccc46d60ccf00fa03871706ac380ff",
+        "file":  "d.txt"
+    },
+    {
+        "hash":  "f035fe24050faaccd17d709ba88763ab",
+        "file":  "e.txt"
+    },
+    {
+        "hash":  "0f4b86cf99f9926c55d065a2b74df390",
+        "file":  "f.txt"
+    },
+    {
+        "hash":  "b9ffa2e5ce90fbb16067fb82972beb15",
+        "file":  "g.txt"
+    }
+]
