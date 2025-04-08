@@ -104,8 +104,10 @@ function createWindow() {
   console.log('Loading URL:', startUrl);
   mainWindow.loadURL(startUrl);
 
-  // Open DevTools in both development and production modes
-  mainWindow.webContents.openDevTools({ mode: 'detach' });
+  // Open DevTools in development mode only
+  if (isDev) {
+    mainWindow.webContents.openDevTools({ mode: 'detach' });
+  }
 
   // Emitted when the window is closed
   mainWindow.on('closed', () => {
@@ -228,25 +230,6 @@ ipcMain.handle('dialog:select-directory', async (event, options) => {
     };
   } catch (error) {
     console.error('Error showing directory dialog:', error);
-    return { success: false, error: error.message };
-  }
-});
-
-ipcMain.handle('games:install', async (event, options) => {
-  try {
-    const { gameId, gameName, installPath, exePath } = options;
-    
-    // In a real app, this would download and install the game
-    // For now, we'll simulate by creating the directory
-    
-    // Create the directory if it doesn't exist
-    if (!fs.existsSync(installPath)) {
-      fs.mkdirSync(installPath, { recursive: true });
-    }
-    
-    return { success: true };
-  } catch (error) {
-    console.error('Error installing game:', error);
     return { success: false, error: error.message };
   }
 });

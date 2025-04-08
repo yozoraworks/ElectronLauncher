@@ -118,30 +118,3 @@ export const selectInstallLocation = async (gameName) => {
     };
   }
 };
-
-// Function to install a game
-export const installGame = async (gameId, gameName, installPath, exePath) => {
-  if (window.electron) {
-    try {
-      // In a real app, this would trigger the download/installation process
-      const result = await window.electron.installGame({
-        gameId,
-        gameName,
-        installPath,
-        exePath
-      });
-      
-      if (result.success) {
-        return { success: true };
-      } else {
-        return { success: false, error: result.error || 'Failed to install game' };
-      }
-    } catch (error) {
-      console.error('Error installing game:', error);
-      return { success: false, error: 'Error installing game' };
-    }
-  } else {
-    console.log('Electron API not available. Cannot install game.');
-    return { success: false, error: 'Electron API not available' };
-  }
-}; 

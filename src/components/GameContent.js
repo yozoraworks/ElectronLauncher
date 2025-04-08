@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { checkGameInstalled, selectInstallLocation, installGame } from '../services/gameService';
+import { checkGameInstalled, selectInstallLocation } from '../services/gameService';
 import { saveGameInstallPath } from '../services/configService';
 import { checkGameVersion, updateGame } from '../services/gameUpdaterService';
 import { fetchGameNews } from '../services/newsService';
@@ -90,48 +90,45 @@ function GameContent({ game, launchGame, installPaths, onGameInstalled }) {
         setInstallStatus(`Installing ${game.name} to ${locationResult.path}...`);
         console.log(`Selected installation path: ${locationResult.path}`);
         
-        // Start installation process
-        const installResult = await installGame(
-          game.id, 
-          game.name, 
-          locationResult.path, 
-          game.exePath
-        );
+        // Ensure the directory exists
+        try {
+          await window.electron.ensureDir(locationResult.path);
+        } catch (error) {
+          console.error('Error creating directory:', error);
+          throw new Error(`Could not create directory: ${error.message}`);
+        }
         
-        if (installResult.success) {
-          setInstallStatus('Saving configuration...');
-          // Save the selected install path to config
-          const saveResult = await saveGameInstallPath(game.id, locationResult.path);
+        setInstallStatus('Saving configuration...');
+        // Save the selected install path to config
+        const saveResult = await saveGameInstallPath(game.id, locationResult.path);
+        
+        if (saveResult.success) {
+          // Update the UI to reflect installation
+          setIsInstalled(true);
+          setInstallStatus('Installation complete!');
           
-          if (saveResult.success) {
-            // Update the UI to reflect installation
-            setIsInstalled(true);
-            setInstallStatus('Installation complete!');
-            
-            // Create version.txt file with current version
-            if (window.electron) {
-              try {
-                const versionPath = `${locationResult.path}/version.txt`;
-                await window.electron.writeFile(versionPath, game.version || '0.0.0');
-                setCurrentVersion(game.version || '0.0.0');
-                setNeedsUpdate(false);
-              } catch (error) {
-                console.error('Error creating version file:', error);
-              }
+          // Create version.txt file with current version
+          if (window.electron) {
+            try {
+              const versionPath = `${locationResult.path}/version.txt`;
+              await window.electron.writeFile(versionPath, '0.0.0');
+              setCurrentVersion('0.0.0');
+              setNeedsUpdate(false);
+            } catch (error) {
+              console.error('Error creating version file:', error);
             }
-            
-            // Notify parent component
-            if (onGameInstalled) {
-              onGameInstalled(game.id, locationResult.path);
-            }
-            
-            // Automatically trigger update to download files
-            await handleUpdate();
-          } else {
-            setInstallError(`Failed to save configuration: ${saveResult.error}`);
           }
+          
+          // Automatically trigger update to download files
+          await handleUpdate();
+          
+          // Notify parent component
+          if (onGameInstalled) {
+            onGameInstalled(game.id, locationResult.path);
+          }
+          
         } else {
-          setInstallError(installResult.error || 'Installation failed');
+          setInstallError(`Failed to save configuration: ${saveResult.error}`);
         }
       } else {
         console.log('User cancelled installation location selection', locationResult);

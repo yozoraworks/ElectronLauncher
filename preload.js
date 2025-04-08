@@ -25,7 +25,6 @@ contextBridge.exposeInMainWorld(
       console.log('Showing directory selection dialog with options:', options);
       return ipcRenderer.invoke('dialog:select-directory', options);
     },
-    installGame: (options) => ipcRenderer.invoke('games:install', options),
     
     // Config management methods
     getGameConfig: () => ipcRenderer.invoke('config:get-game-paths'),
