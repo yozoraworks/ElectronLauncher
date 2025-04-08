@@ -20,7 +20,7 @@ const gameNews = {
       date: '2023-04-01',
       title: 'New Minecraft Update 1.19',
       content: 'Explore the new Wild Update featuring new biomes and mobs like the Warden and the Allay.',
-      image: '/assets/news/minecraft-update.jpg',
+      image: './assets/news/minecraft-update.jpg',
       url: ''
     },
     {
@@ -28,7 +28,7 @@ const gameNews = {
       date: '2023-03-15',
       title: 'Minecraft Community Event',
       content: 'Join the community building event this weekend to help create a massive collaborative world.',
-      image: '/assets/news/minecraft-event.jpg',
+      image: './assets/news/minecraft-event.jpg',
       url: 'https://www.minecraft.net/en-us/community'
     },
     {
@@ -36,7 +36,7 @@ const gameNews = {
       date: '2023-02-28',
       title: 'Minecraft Marketplace Updates',
       content: 'Check out the latest additions to the Minecraft marketplace with new skins and texture packs.',
-      image: '/assets/news/minecraft-marketplace.jpg',
+      image: './assets/news/minecraft-marketplace.jpg',
     }
   ],
   2: [ // Fortnite news
@@ -45,7 +45,7 @@ const gameNews = {
       date: '2023-04-05',
       title: 'Chapter 4 Season 2 Now Live',
       content: 'Drop into the new season with new locations, weapons, and the ability to use vehicles in creative mode.',
-      image: '/assets/news/fortnite-season.jpg',
+      image: './assets/news/fortnite-season.jpg',
       url: 'https://www.google.com/search?q=fortnite+chapter+4+season+2'
     },
     {
@@ -53,7 +53,7 @@ const gameNews = {
       date: '2023-03-20',
       title: 'Fortnite Competitive Update',
       content: 'Changes to competitive play and tournament structure have been announced for the upcoming FNCS.',
-      image: '/assets/news/fortnite-competitive.jpg',
+      image: './assets/news/fortnite-competitive.jpg',
       url: 'https://www.epicgames.com/fortnite/competitive'
     },
     {
@@ -61,7 +61,7 @@ const gameNews = {
       date: '2023-03-10',
       title: 'New Collaboration Skins',
       content: 'Famous movie characters join the Fortnite universe with exclusive skins and emotes.',
-      image: '/assets/news/fortnite-skins.jpg',
+      image: './assets/news/fortnite-skins.jpg',
       url: 'https://www.epicgames.com/fortnite/en-US/news'
     }
   ],
@@ -71,7 +71,7 @@ const gameNews = {
       date: '2023-04-02',
       title: 'New Agent Revealed',
       content: 'Meet the newest agent joining the Valorant roster, with unique abilities that will change the meta.',
-      image: '/assets/news/valorant-agent.jpg',
+      image: './assets/news/valorant-agent.jpg',
       url: 'https://www.google.com/search?q=valorant+new+agent'
     },
     {
@@ -79,7 +79,7 @@ const gameNews = {
       date: '2023-03-25',
       title: 'Map Updates and Balance Changes',
       content: 'Several maps have received updates to address balance issues and improve gameplay flow.',
-      image: '/assets/news/valorant-maps.jpg',
+      image: './assets/news/valorant-maps.jpg',
       url: 'https://playvalorant.com/en-us/news/game-updates/'
     },
     {
@@ -87,7 +87,7 @@ const gameNews = {
       date: '2023-03-15',
       title: 'Valorant Championship Series',
       content: 'The biggest Valorant tournament of the year is coming soon with teams from around the world.',
-      image: '/assets/news/valorant-tournament.jpg',
+      image: './assets/news/valorant-tournament.jpg',
       url: 'https://valorantesports.com'
     }
   ]
@@ -98,28 +98,28 @@ const globalNews = [
   {
     id: 1,
     title: 'Gaming Industry News',
-    image: '/assets/global-news-1.svg',
+    image: './assets/global-news-1.svg',
     summary: 'Latest trends in the gaming industry show a shift towards cross-platform play and more indie game success stories.',
     url: 'https://www.google.com/search?q=gaming+industry+trends'
   },
   {
     id: 2,
     title: 'E-Sports Tournament Announced',
-    image: '/assets/global-news-2.svg',
+    image: './assets/global-news-2.svg',
     summary: 'The biggest e-sports event of the year has been announced with a record-breaking prize pool.',
     url: 'https://www.esportsinsider.com/news'
   },
   {
     id: 3,
     title: 'New Gaming Hardware Released',
-    image: '/assets/global-news-3.svg',
+    image: './assets/global-news-3.svg',
     summary: 'Next-gen gaming hardware hits the market with impressive performance improvements and new features.',
     url: 'https://www.techradar.com/news/computing-components/graphics-cards'
   },
   {
     id: 4,
     title: 'Game Developer Conference Highlights',
-    image: '/assets/global-news-4.svg',
+    image: './assets/global-news-4.svg',
     summary: 'Catch up on all the exciting announcements and demos from this year\'s Game Developer Conference.',
     url: 'https://gdconf.com'
   }
@@ -132,7 +132,7 @@ const games = [
     name: 'test',
     version: '1.19.2',
     exePath: 'test.exe',
-    icon: '/assets/icons/minecraft.svg',
+    icon: './assets/icons/minecraft.svg',
     filelistUrl: 'http://localhost:3001/files/minecraft/filelist.json',
     downloadBucketUrl: 'http://localhost:3001/files/minecraft/'
   },
@@ -141,7 +141,7 @@ const games = [
     name: 'Fortnite',
     version: '23.10.0',
     exePath: 'FortniteClient-Win64-Shipping.exe',
-    icon: '/assets/icons/fortnite.svg',
+    icon: './assets/icons/fortnite.svg',
     filelistUrl: 'https://example.com/games/fortnite/filelist.json',
     downloadBucketUrl: 'https://storage.example.com/fortnite/'
   },
@@ -150,7 +150,7 @@ const games = [
     name: 'Valorant',
     version: '5.12',
     exePath: 'VALORANT.exe',
-    icon: '/assets/icons/valorant.svg',
+    icon: './assets/icons/valorant.svg',
     filelistUrl: 'https://example.com/games/valorant/filelist.json',
     downloadBucketUrl: 'https://storage.example.com/valorant/'
   }

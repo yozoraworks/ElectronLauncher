@@ -15,7 +15,7 @@ export const loadGames = async () => {
       name: game.name,
       version: game.version,
       exePath: game.exePath || `${game.name}.exe`, // Use provided exePath or create default
-      icon: game.icon || '/assets/icons/default.svg',
+      icon: game.icon || './assets/icons/default.svg',
       filelistUrl: game.filelistUrl,
       downloadBucketUrl: game.downloadBucketUrl,
       news: game.news || []

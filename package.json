@@ -1,7 +1,8 @@
 {
   "name": "game-launcher",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple game launcher built with Electron and React",
+  "homepage": "./",
   "main": "main.js",
   "scripts": {
     "start": "electron .",

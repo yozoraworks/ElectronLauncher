@@ -39,7 +39,7 @@ function HomeContent({ globalNews, isLoading, error }) {
             onClick={(e) => openNewsUrl(e, news.url)}
             style={{ cursor: news.url ? 'pointer' : 'default' }}
           >
-            <img src={news.image} alt={news.title} onError={(e) => {e.target.src = '/assets/placeholder.svg'}} />
+            <img src={news.image} alt={news.title} onError={(e) => {e.target.src = './assets/placeholder.svg'}} />
             <div className="news-info">
               <h3>{news.title}</h3>
               <p>{news.summary}</p>

@@ -376,7 +376,7 @@ function GameContent({ game, launchGame, installPaths, onGameInstalled }) {
   return (
     <div className="game-content">
       <div className="game-header">
-        <img className="game-detail-icon" src={game.icon} alt={game.name} onError={(e) => {e.target.src = '/assets/placeholder.svg'}} />
+        <img className="game-detail-icon" src={game.icon} alt={game.name} onError={(e) => {e.target.src = './assets/placeholder.svg'}} />
         <div className="game-title-info">
           <h1>{game.name}</h1>
           <div className="game-version-info">

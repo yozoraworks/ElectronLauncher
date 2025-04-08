@@ -24,7 +24,7 @@ function NavPanel({ games, selectedItem, setSelectedItem }) {
             onClick={() => setSelectedItem(game.id)}
           >
             <div className="nav-icon">
-              <img src={game.icon} alt={game.name} onError={(e) => {e.target.src = '/assets/placeholder.svg'}} />
+              <img src={game.icon} alt={game.name} onError={(e) => {e.target.src = './assets/placeholder.svg'}} />
             </div>
             <div className="nav-text">{game.name}</div>
           </div>
