@@ -14,8 +14,6 @@ contextBridge.exposeInMainWorld(
     maximizeWindow: () => ipcRenderer.invoke('window:maximize'),
     closeWindow: () => ipcRenderer.invoke('window:close'),
     
-    // Game management methods
-    getGames: () => ipcRenderer.invoke('games:get'),
     launchGame: (path) => ipcRenderer.invoke('games:launch', path),
     
     // Game installation methods

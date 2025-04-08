@@ -23,29 +23,6 @@ export const loadGames = async () => {
     
     return { success: true, data: formattedGames };
   }
-  
-  // If API fetch failed or returned no data, try Electron backend as fallback
-  console.log('API fetch failed, trying Electron backend');
-  
-  if (window.electron) {
-    try {
-      const result = await window.electron.getGames();
-      
-      if (result.success) {
-        console.log('Games loaded from Electron backend');
-        return { success: true, data: result.data || [] };
-      } else {
-        console.error('Failed to load games from Electron backend');
-        return { success: false, error: result.error || 'Failed to load games from backend' };
-      }
-    } catch (error) {
-      console.error('Error calling Electron API:', error);
-      return { success: false, error: 'Error loading games. Please restart the application.' };
-    }
-  } else {
-    console.log('Electron API not available. Using placeholder game data.');
-    return { success: false, error: 'Electron API not available' };
-  }
 };
 
 // Function to launch a game

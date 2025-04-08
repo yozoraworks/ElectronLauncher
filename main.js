@@ -104,10 +104,8 @@ function createWindow() {
   console.log('Loading URL:', startUrl);
   mainWindow.loadURL(startUrl);
 
-  // Open DevTools in development mode
-  if (isDev) {
-    mainWindow.webContents.openDevTools({ mode: 'detach' });
-  }
+  // Open DevTools in both development and production modes
+  mainWindow.webContents.openDevTools({ mode: 'detach' });
 
   // Emitted when the window is closed
   mainWindow.on('closed', () => {
@@ -176,93 +174,6 @@ ipcMain.handle('window:maximize', () => {
 ipcMain.handle('window:close', () => {
   mainWindow.close();
   return { success: true };
-});
-
-// Game management handlers
-ipcMain.handle('games:get', async () => {
-  try {
-    // In a real implementation, this would fetch games from a database or API
-    // For this example, we'll return a few sample games with the requested fields
-    const games = [
-      {
-        id: 1,
-        name: 'Minecraft',
-        version: '1.19.2',
-        exePath: 'minecraft.exe', // Relative executable path
-        icon: '/assets/icons/minecraft.svg',
-        filelistUrl: 'https://example.com/games/minecraft/filelist.json',
-        downloadBucketUrl: 'https://storage.example.com/minecraft/',
-        news: [
-          {
-            id: 1,
-            date: '2023-04-01',
-            title: 'New Minecraft Update 1.19',
-            content: 'Explore the new Wild Update featuring new biomes and mobs like the Warden and the Allay.'
-          },
-          {
-            id: 2,
-            date: '2023-03-15',
-            title: 'Minecraft Community Event',
-            content: 'Join the community building event this weekend to help create a massive collaborative world.'
-          }
-        ]
-      },
-      {
-        id: 2,
-        name: 'Fortnite',
-        version: '23.10.0',
-        exePath: 'FortniteClient-Win64-Shipping.exe', // Relative executable path
-        icon: '/assets/icons/fortnite.svg',
-        filelistUrl: 'https://example.com/games/fortnite/filelist.json',
-        downloadBucketUrl: 'https://storage.example.com/fortnite/',
-        news: [
-          {
-            id: 1,
-            date: '2023-04-05',
-            title: 'Chapter 4 Season 2 Now Live',
-            content: 'Drop into the new season with new locations, weapons, and the ability to use vehicles in creative mode.'
-          },
-          {
-            id: 2,
-            date: '2023-03-20',
-            title: 'Fortnite Competitive Update',
-            content: 'Changes to competitive play and tournament structure have been announced for the upcoming FNCS.'
-          }
-        ]
-      },
-      {
-        id: 3,
-        name: 'Valorant',
-        version: '5.12',
-        exePath: 'VALORANT.exe', // Relative executable path
-        icon: '/assets/icons/valorant.svg',
-        filelistUrl: 'https://example.com/games/valorant/filelist.json',
-        downloadBucketUrl: 'https://storage.example.com/valorant/',
-        news: [
-          {
-            id: 1,
-            date: '2023-04-02',
-            title: 'New Agent Revealed',
-            content: 'Meet the newest agent joining the Valorant roster, with unique abilities that will change the meta.'
-          },
-          {
-            id: 2,
-            date: '2023-03-25',
-            title: 'Map Updates and Balance Changes',
-            content: 'Several maps have received updates to address balance issues and improve gameplay flow.'
-          }
-        ]
-      }
-    ];
-
-    return {
-      success: true,
-      data: games
-    };
-  } catch (error) {
-    console.error('Error getting games:', error);
-    return { success: false, error: error.message };
-  }
 });
 
 ipcMain.handle('games:launch', async (event, gamePath) => {
