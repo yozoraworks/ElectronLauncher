@@ -5,11 +5,82 @@ const path = require('path');
 const fs = require('fs');
 const isDev = require('electron-is-dev');
 const crypto = require('crypto');
+const { autoUpdater } = require('electron-updater');
+
+// GitHub repository where updates will be hosted
+const GITHUB_REPOSITORY = 'yozoraworks/ElectronLauncher';
 
 let mainWindow;
 const configPath = path.join(app.getPath('userData'), 'game-config.json');
 // App directory for storing games
 const appDirectory = path.dirname(app.getPath('exe'));
+
+// Auto-update configuration
+function setupAutoUpdater() {
+  // Configure for GitHub repository
+  autoUpdater.setFeedURL({
+    provider: 'github',
+    owner: GITHUB_REPOSITORY.split('/')[0],
+    repo: GITHUB_REPOSITORY.split('/')[1],
+  });
+
+  // Check for updates on startup (except in dev environment)
+  if (!isDev) {
+    autoUpdater.checkForUpdatesAndNotify();
+  }
+
+  // Check for updates every hour
+  setInterval(() => {
+    if (!isDev) {
+      autoUpdater.checkForUpdatesAndNotify();
+    }
+  }, 60 * 60 * 1000);
+
+  // Auto updater events
+  autoUpdater.on('checking-for-update', () => {
+    console.log('Checking for update...');
+  });
+
+  autoUpdater.on('update-available', (info) => {
+    console.log('Update available:', info);
+  });
+
+  autoUpdater.on('update-not-available', (info) => {
+    console.log('Update not available:', info);
+  });
+
+  autoUpdater.on('error', (err) => {
+    console.error('Error in auto-updater:', err);
+  });
+
+  autoUpdater.on('download-progress', (progressObj) => {
+    const message = `Download speed: ${progressObj.bytesPerSecond} - Downloaded ${progressObj.percent}% (${progressObj.transferred}/${progressObj.total})`;
+    console.log(message);
+    if (mainWindow) {
+      mainWindow.webContents.send('update-progress', progressObj);
+    }
+  });
+
+  autoUpdater.on('update-downloaded', (info) => {
+    console.log('Update downloaded; will install now', info);
+    // Notify renderer process that an update has been downloaded
+    if (mainWindow) {
+      mainWindow.webContents.send('update-downloaded', info);
+      
+      // Prompt user to restart the app to apply the update
+      dialog.showMessageBox({
+        type: 'info',
+        title: 'Update Ready',
+        message: 'A new version has been downloaded. Restart the application to apply the updates.',
+        buttons: ['Restart', 'Later']
+      }).then(result => {
+        if (result.response === 0) {
+          autoUpdater.quitAndInstall();
+        }
+      });
+    }
+  });
+}
 
 // Create the main window
 function createWindow() {
@@ -45,7 +116,10 @@ function createWindow() {
 }
 
 // App events
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  createWindow();
+  setupAutoUpdater();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
